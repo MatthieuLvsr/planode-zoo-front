@@ -4,10 +4,13 @@ import { Animal } from "../../dto"
 import "./animal.scss"
 import { Link } from "react-router-dom"
 import { AnimalUpdate } from "./AnimalUpdate"
+import { AuthContext, AuthContextProps } from "../../context"
 
 export const Animals = () =>{
+    const { token } = useContext<AuthContextProps>(AuthContext as Context<AuthContextProps>);
     const [animals,setAnimals] = useState<Animal[]>([])
     const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null)
+    const [uptodate,setUptodate] = useState<boolean>(false)
 
     useEffect(()=>{        
         const fetchAnimals = async () => {
@@ -16,7 +19,7 @@ export const Animals = () =>{
         }
         fetchAnimals();
         // setInterval(fetchAnimals,1000);
-    },[])
+    },[uptodate])
 
     const handleUpdate = (event:SyntheticEvent<HTMLElement>) => {
         const target = event.target as HTMLDivElement
@@ -44,7 +47,9 @@ export const Animals = () =>{
                         <div className="col colH">AGE</div>
                         <div className="col colH speciesCol">SPECIES</div>
                         <div className="col colH descriptionCol">DESCRIPTION</div>
-                        <div className="col colH">ACTION</div>
+                        {token !== "" &&
+                            <div className="col colH">ACTION</div>
+                        }
                     </div>
                     <div className="tbody">
                         {animals.map((animal:Animal, index:number) => (
@@ -54,7 +59,9 @@ export const Animals = () =>{
                                 <div className="col">{animal.age} ans</div>
                                 <div className="col speciesCol">{animal.species}</div>
                                 <div className="col descriptionCol">{animal.description}</div>
-                                <div className="col" onClick={handleUpdate}>UPDATE</div>
+                                {token !== "" &&
+                                    <div className="col actionCol" onClick={handleUpdate}>UPDATE</div>
+                                }
                             </div>
                         ))}
                     </div>
@@ -63,7 +70,7 @@ export const Animals = () =>{
         </>
         }
         {selectedAnimal !== null &&
-            <AnimalUpdate animal={selectedAnimal} cancelFunction={handleCancel}/>
+            <AnimalUpdate uptodate={uptodate} setUptodate={setUptodate} animal={selectedAnimal} cancelFunction={handleCancel}/>
         }
         </div>
     )

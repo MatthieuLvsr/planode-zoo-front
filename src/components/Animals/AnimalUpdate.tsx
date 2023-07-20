@@ -6,8 +6,10 @@ import "./animal.scss"
 import { Animal } from "../../dto";
 
 export interface AnimalUpdateAttributes{
-    animal:Animal,
-    cancelFunction: () => void
+    animal: Animal,
+    cancelFunction: () => void,
+    uptodate: boolean
+    setUptodate: (current:boolean) => void
 }
 
 export const AnimalUpdate = (attributes:AnimalUpdateAttributes) => {
@@ -39,9 +41,13 @@ export const AnimalUpdate = (attributes:AnimalUpdateAttributes) => {
     },[token]);
 
     const handleSubmit = (event:FormEvent) => {
-        // event.preventDefault();
+        event.preventDefault();
         const updateAnimal = async (animal:Animal):Promise<Animal|null> => {
             const response = await AnimalsService.updateAnimal(animal)
+            if(response !== null){
+                attributes.setUptodate(!attributes.uptodate)   
+                attributes.cancelFunction()
+            }         
             return response
         }
         if(
@@ -60,7 +66,7 @@ export const AnimalUpdate = (attributes:AnimalUpdateAttributes) => {
                 age,
                 enclosure
             }
-            updateAnimal(updatedAnimal)
+            updateAnimal(updatedAnimal)            
         }
     }
 

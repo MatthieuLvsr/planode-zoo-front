@@ -90,6 +90,10 @@
             }
         }
 
+        .actionCol{
+            cursor: pointer;
+        }
+
         .speciesCol{
             width: calc(1.5*$colWidth);
         }
