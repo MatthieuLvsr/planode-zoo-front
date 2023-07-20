@@ -23,9 +23,8 @@ export class AnimalsService {
     }
 
     static updateAnimal = async (animal:Animal):Promise<Animal|null> => {
-        console.log(animal);
         
-        const response = await axios.post(process.env.REACT_APP_API_URL + `/animal/${animal.name}`,{
+        const response = await axios.patch(process.env.REACT_APP_API_URL + `/animal/${animal.name}`,{
             description:animal.description,
             image:animal.image,
             species:animal.species,

@@ -1,10 +1,10 @@
 import { Context, FormEvent, SyntheticEvent, useContext, useEffect, useState } from "react"
 import { AuthContext, AuthContextProps } from "../../context";
 import "./form.scss"
-import axios from "axios";
+// import axios from "axios";
 import { AnimalsService } from "../../services";
 import { Animal } from "../../dto";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { EnclosureService } from "../../services/enclosure.service";
 
 export interface AnimalFormAttributes{
@@ -14,13 +14,13 @@ export interface AnimalFormAttributes{
 export const AnimalForm = () => {
     const { token } = useContext<AuthContextProps>(AuthContext as Context<AuthContextProps>);
 
-    const location = useLocation();
-    useEffect(()=>{
-        const currentAnimal = location.state && location.state.animal;
-        console.log(currentAnimal);
+    // const location = useLocation();
+    // useEffect(()=>{
+    //     const currentAnimal = location.state && location.state.animal;
+    //     // console.log(currentAnimal);
         
-        if(currentAnimal)setAnimal(currentAnimal)
-    },[])
+    //     if(currentAnimal)setAnimal(currentAnimal)
+    // },[])
 
     const [speciesList, setSpeciesList] = useState<string[]>([]);
 

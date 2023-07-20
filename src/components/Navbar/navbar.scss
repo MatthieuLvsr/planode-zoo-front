@@ -45,7 +45,9 @@ $lightGreen:rgb(14, 120, 76);
 }
 
 .login-form{
-    background-color: $darkGreen;
+    // background-color: $darkGreen;
+    backdrop-filter: blur(5px);
+    border: 1px solid $darkGreen;
     border-radius: 0 0 $radius $radius;
     display: flex;
     justify-content: center;

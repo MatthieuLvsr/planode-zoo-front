@@ -8,15 +8,21 @@
 
     width: 60%;
     margin: 40px auto;
+    border: 1px solid $darkGreen;
     color: white;
     display: flex;
     flex-direction: column;
-    background-color: $darkGreen;
     border-radius: $radius;
-    padding: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    // padding: 10px;
 
     h2{
         text-align: center;
+        position: relative;
+        margin: 0;
+        padding: 10px;
+        background-color: $darkGreen;
     }
 
     .form-line{
@@ -38,6 +44,11 @@
                 resize: vertical;
             }
         }
+
+    }
+
+    &>input{
+        margin: 15px;
     }
 
 }
