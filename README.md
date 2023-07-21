@@ -47,5 +47,18 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Docker
 
-`docker build -t name-of-project .`
-`docker run -p "8080:80" name-of-project`
+`docker-compose up --build`
+
+## Vercel
+
+If you don't have Vercel, install it with this command line :
+
+`npm i -g vercel`
+
+Then login :
+
+`vercel login`
+
+And you can finally upload your project :
+
+`vercel`
