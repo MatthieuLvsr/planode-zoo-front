@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "env": {
+        "REACT_APP_API_URL":"https://planode-zoo-api.vercel.app"
+    }
+  }
+  
