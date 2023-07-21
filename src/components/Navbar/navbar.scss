@@ -35,7 +35,11 @@ $lightGreen:rgb(14, 120, 76);
         position: relative;
         text-transform: uppercase;
         width: 50%;
-        
+
+        span{
+            margin: 5px;
+            cursor: pointer;
+        }
     }
     
     a{
