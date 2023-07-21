@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+
+  h1{
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    font-weight: bold;
+    font-size: 50px;
+  }
 }
 
 .App-logo {
